@@ -44,9 +44,10 @@ namespace Datos
             return ok;
         }
 
-        public IList<Categoria> Read()//(int? id)
+        public IList<Categoria> Read(int? id)
         {
             IList<Categoria> categorias = null;
+            categorias = _db.Categoria.ToList();
 
             return categorias;
         }

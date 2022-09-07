@@ -18,6 +18,7 @@ namespace Principal
             _class1 = new Class1();
             //CRUD
             program.Create();
+            program.Read();
         }
 
         private void Create()
@@ -51,7 +52,29 @@ namespace Principal
 
         private void Read()
         {
+            IList<Categoria> categorias = null;
 
+            Console.WriteLine("Dime el id del registro a mostrar");
+            string texto = Console.ReadLine();
+            if (texto == null || texto == "")
+            {
+                categorias = _class1.Read(null);
+            }
+            else
+            {
+                int id = 0;
+                if (int.TryParse(texto, out id) == true)
+                {
+                    id = int.Parse(texto);
+                }
+                categorias = _class1.Read(id);
+            }
+
+            foreach(Categoria categoria in categorias)
+            {
+                Console.WriteLine(categoria.CategoryID + " " + categoria.CategoryName);
+            }
+            Console.ReadLine();
         }
 
 
