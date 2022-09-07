@@ -44,11 +44,11 @@ namespace Datos
             return ok;
         }
 
-        public bool Read(int? id)
+        public IList<Categoria> Read()//(int? id)
         {
-            bool ok = false;
+            IList<Categoria> categorias = null;
 
-            return ok;
+            return categorias;
         }
     }
 }
