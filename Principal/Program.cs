@@ -17,9 +17,9 @@ namespace Principal
             program = new Program();
             _class1 = new Class1();
             //CRUD
-            program.Create();
-            program.Read();
-            program.Update();
+            //program.Create();
+            //program.Read();
+            //program.Update();
             program.Read();
             program.Delete();
             program.Read();
@@ -118,21 +118,15 @@ namespace Principal
                 if (int.TryParse(texto, out id) == true)
                 {
                     id = int.Parse(texto);
-                    //Console.WriteLine("Dime el nuevo NOMBRE del registro");
-                    //texto = Console.ReadLine();
                 }
-                //if (texto != null && texto != "")
-                if (id == 0)
+                bool ok = false;
+                ok = _class1.Delete(id, texto);
+                if (ok == true)
                 {
-                    bool ok = false;
-                    ok = _class1.Delete(id, texto);
-                    if (ok == true)
-                    {
-                        ok = _class1.GuardarCambios();
-                    }
-                    Console.WriteLine("El resultado de Delete ha sido: " + ok);
-                    Console.ReadLine();
+                    ok = _class1.GuardarCambios();
                 }
+                Console.WriteLine("El resultado de Delete ha sido: " + ok);
+                Console.ReadLine();
             }
 
         }

@@ -58,7 +58,7 @@ namespace Datos
 
         public bool Update(int id, string texto)
         {
-            if (id != null && id > 0)
+            if (id > 0)
             {
                 Categoria categoria = _db.Categoria.Where(x => x.CategoryID == id).FirstOrDefault();
                 categoria.CategoryName = texto;
@@ -68,16 +68,26 @@ namespace Datos
             return false;
         }
 
-        public bool Delete(int? id, string texto)
+        public bool Delete(int id, string texto)
         {
-            if (id != null && id > 0)
+            if (id > 0)
             {
                 Categoria categoria = _db.Categoria.Where(x => x.CategoryID == id).FirstOrDefault();
-                categoria.CategoryName = texto;
+                _db.Categoria.Remove(categoria);
                 return true;
             }
+            else
+            {
+                IList<Categoria> categorias = null;
+                categorias = _db.Categoria.ToList();
+                categorias = categorias.Where(x => x.CategoryName == texto).ToList();
+                foreach(Categoria categoria in categorias)
+                {
+                    _db.Categoria.Remove(categoria);
+                }
 
-            return false;
+                return true;
+            }
         }
     }
 }
