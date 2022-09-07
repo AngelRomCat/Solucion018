@@ -21,6 +21,8 @@ namespace Principal
             program.Read();
             program.Update();
             program.Read();
+            program.Delete();
+            program.Read();
         }
 
         private void Create()
@@ -104,8 +106,35 @@ namespace Principal
                     Console.ReadLine();
                 }
             }
-
         }
 
+        private void Delete()
+        {
+            Console.WriteLine("Dime el ID o el NOMBRE del registro a eliminar");
+            string texto = Console.ReadLine();
+            if (texto != null && texto != "")
+            {
+                int id = 0;
+                if (int.TryParse(texto, out id) == true)
+                {
+                    id = int.Parse(texto);
+                    //Console.WriteLine("Dime el nuevo NOMBRE del registro");
+                    //texto = Console.ReadLine();
+                }
+                //if (texto != null && texto != "")
+                if (id == 0)
+                {
+                    bool ok = false;
+                    ok = _class1.Delete(id, texto);
+                    if (ok == true)
+                    {
+                        ok = _class1.GuardarCambios();
+                    }
+                    Console.WriteLine("El resultado de Delete ha sido: " + ok);
+                    Console.ReadLine();
+                }
+            }
+
+        }
     }
 }
