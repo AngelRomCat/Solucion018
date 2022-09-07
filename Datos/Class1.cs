@@ -58,14 +58,13 @@ namespace Datos
 
         public bool Update(int id, string texto)
         {
-            IList<Categoria> categorias = null;
-            categorias = _db.Categoria.ToList();
             if (id != null && id > 0)
             {
-                categorias = categorias.Where(x => x.CategoryID == id).ToList();
+                Categoria categoria = _db.Categoria.Where(x => x.CategoryID == id).FirstOrDefault();
+                return true;
             }
 
-            return true;
+            return false;
         }
     }
 }

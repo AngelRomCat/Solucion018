@@ -97,11 +97,11 @@ namespace Principal
                 {
                     bool ok = false;
                     ok = _class1.Update(id, texto);
-
-                    ok = _class1.GuardarCambios();
-
+                    if (ok == true)
+                    {
+                        ok = _class1.GuardarCambios();
+                    }
                     Console.WriteLine("El resultado de Update ha sido: " + ok);
-
                     Console.ReadLine();
                 }
             }
