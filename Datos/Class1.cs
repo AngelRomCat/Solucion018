@@ -61,6 +61,7 @@ namespace Datos
             if (id != null && id > 0)
             {
                 Categoria categoria = _db.Categoria.Where(x => x.CategoryID == id).FirstOrDefault();
+                categoria.CategoryName = texto;
                 return true;
             }
 

@@ -91,7 +91,6 @@ namespace Principal
                     id = int.Parse(texto);
                     Console.WriteLine("Dime el nuevo NOMBRE del registro");
                     texto = Console.ReadLine();
-                    texto = Console.ReadLine();
                 }
                 if (texto != null && texto != "")
                 {
