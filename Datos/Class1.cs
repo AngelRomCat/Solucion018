@@ -48,8 +48,24 @@ namespace Datos
         {
             IList<Categoria> categorias = null;
             categorias = _db.Categoria.ToList();
+            if (id != null && id > 0)
+            {
+                categorias = categorias.Where(x => x.CategoryID == id).ToList();
+            }
 
             return categorias;
+        }
+
+        public bool Update(int id, string texto)
+        {
+            IList<Categoria> categorias = null;
+            categorias = _db.Categoria.ToList();
+            if (id != null && id > 0)
+            {
+                categorias = categorias.Where(x => x.CategoryID == id).ToList();
+            }
+
+            return true;
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Principal
             //CRUD
             program.Create();
             program.Read();
+            program.Update();
+            program.Read();
         }
 
         private void Create()
@@ -29,25 +31,25 @@ namespace Principal
 
             Console.WriteLine("Dime el NOMBRE del nuevo registro");
             string texto = Console.ReadLine();
-            if (texto != null)
+            if (texto != null && texto != "")
             {
                 categoria.CategoryName = texto;
+
+                Console.WriteLine("Dime la DESCRIPCIÓN del nuevo registro");
+                texto = Console.ReadLine();
+                if (texto != null && texto != "")
+                {
+                    categoria.Description = texto; // "Utensilio cuya utilidad no se ha demostrado de momento";
+                }
+                bool ok = false;
+                ok = _class1.Create(categoria);
+
+                ok = _class1.GuardarCambios();
+
+                Console.WriteLine("El resultado de Create ha sido: " + ok);
+
+                Console.ReadLine();
             }
-
-            Console.WriteLine("Dime la DESCRIPCIÓN del nuevo registro");
-            texto = Console.ReadLine();
-            if (texto != null)
-            {
-                categoria.Description = texto; // "Utensilio cuya utilidad no se ha demostrado de momento";
-            }
-            bool ok = false;
-            ok = _class1.Create(categoria);
-
-            ok = _class1.GuardarCambios();
-
-            Console.WriteLine("El resultado de Create ha sido: " + ok);
-
-            Console.ReadLine();
         }
 
         private void Read()
@@ -77,7 +79,34 @@ namespace Principal
             Console.ReadLine();
         }
 
+        private void Update()
+        {
+            Console.WriteLine("Dime el ID del registro a modificar");
+            string texto = Console.ReadLine();
+            if (texto != null && texto != "")
+            {
+                int id = 0;
+                if (int.TryParse(texto, out id) == true)
+                {
+                    id = int.Parse(texto);
+                    Console.WriteLine("Dime el nuevo NOMBRE del registro");
+                    texto = Console.ReadLine();
+                    texto = Console.ReadLine();
+                }
+                if (texto != null && texto != "")
+                {
+                    bool ok = false;
+                    ok = _class1.Update(id, texto);
 
+                    ok = _class1.GuardarCambios();
+
+                    Console.WriteLine("El resultado de Update ha sido: " + ok);
+
+                    Console.ReadLine();
+                }
+            }
+
+        }
 
     }
 }
