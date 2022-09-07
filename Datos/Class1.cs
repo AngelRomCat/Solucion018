@@ -43,5 +43,12 @@ namespace Datos
             }
             return ok;
         }
+
+        public bool Read(int? id)
+        {
+            bool ok = false;
+
+            return ok;
+        }
     }
 }

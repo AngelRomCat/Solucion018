@@ -25,14 +25,33 @@ namespace Principal
             Categoria categoria = null;
             categoria = new Categoria();
             //categoria.CategoryID = ??
-            categoria.CategoryName = "Chisme";
-            categoria.Description = "Utensilio cuya utilidad no se ha demostrado de momento";
+
+            Console.WriteLine("Dime el NOMBRE del nuevo registro");
+            string texto = Console.ReadLine();
+            if (texto != null)
+            {
+                categoria.CategoryName = texto;
+            }
+
+            Console.WriteLine("Dime la DESCRIPCIÓN del nuevo registro");
+            texto = Console.ReadLine();
+            if (texto != null)
+            {
+                categoria.Description = texto; // "Utensilio cuya utilidad no se ha demostrado de momento";
+            }
             bool ok = false;
             ok = _class1.Create(categoria);
 
             ok = _class1.GuardarCambios();
 
             Console.WriteLine("El resultado de Create ha sido: " + ok);
+
+            Console.ReadLine();
+        }
+
+        private void Read()
+        {
+
         }
 
 
