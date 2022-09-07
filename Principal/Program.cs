@@ -14,9 +14,9 @@ namespace Principal
             program = new Program();
             _class1 = new Class1();
             //CRUD
-            //program.Create();
-            //program.Read();
-            //program.Update();
+            program.Create();
+            program.Read();
+            program.Update();
             program.Read();
             program.Delete();
             program.Read();
