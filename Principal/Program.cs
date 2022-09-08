@@ -24,15 +24,14 @@ namespace Principal
 
         private void Create()
         {
-            bool ok = false;
             Categoria categoria = null;
+            categoria = new Categoria();
+            //categoria.CategoryID = ??
 
             Console.WriteLine("Dime el NOMBRE del nuevo registro");
             string texto = Console.ReadLine();
             if (texto != null && texto != "")
             {
-                categoria = new Categoria();
-                //categoria.CategoryID = ??
                 categoria.CategoryName = texto;
 
                 Console.WriteLine("Dime la DESCRIPCIÓN del nuevo registro");
@@ -41,17 +40,15 @@ namespace Principal
                 {
                     categoria.Description = texto; // "Utensilio cuya utilidad no se ha demostrado de momento";
                 }
-
+                bool ok = false;
                 ok = _class1.Create(categoria);
-                if (ok == true)
-                {
-                    ok = _class1.GuardarCambios();
-                }
+
+                ok = _class1.GuardarCambios();
+
+                Console.WriteLine("El resultado de Create ha sido: " + ok);
+
+                Console.ReadLine();
             }
-
-            Console.WriteLine("El resultado de Create ha sido: " + ok);
-
-            Console.ReadLine();
         }
 
         private void Read()
